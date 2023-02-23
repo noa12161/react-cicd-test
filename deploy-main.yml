@@ -1,0 +1,17 @@
+name: remote ssh command for deploy
+on:
+  push:
+    branches: [master]
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: executing remote ssh commands using key
+        uses: appleboy/ssh-action@master
+        with:
+          host: 49.236.137.183
+          username: root
+          port: 1028
+          script: |
+            ./deploy.sh
